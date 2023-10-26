@@ -1,25 +1,23 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
+public class Main {
+    public static void main(String[] args) {
         System.out.println('\n');
-        System.out.println("-------------------------(:  Waseem please don't minus 20 point from us  :)-------------------------"+'\n');
+        System.out.println("-------------------------(:  Waseem please don't minus 20 point from us  :)-------------------------" + '\n');
         Scanner in = new Scanner(System.in);
-        ArrayList<Section> section = new ArrayList<Section>();
+        ArrayList<Section> section = new ArrayList<>();
         System.out.println("Please Enter the Standard paid for your part-time employee:");
         int paid;
         boolean valid_number;
         do {
-            paid=in.nextInt();
-            valid_number=PartTimeEmployee.setPaid(paid);
-        }while(valid_number);
+            paid = in.nextInt();
+            valid_number = PartTimeEmployee.setPaid(paid);
+        } while (valid_number);
 
-        ArrayList<Employee> employees = new ArrayList<Employee>();
-        boolean Manar=true;
-        while(Manar) {
+        ArrayList<Employee> employees = new ArrayList<>();
+        boolean Manar = true;
+        while (Manar) {
             System.out.println("Choose one of the following number to run the command:");
             System.out.println("1) fill Sections info and their leaders");
             System.out.println("2) Add Employee to specific Section");
@@ -32,25 +30,21 @@ public class Main
             System.out.println("9) diplay all Employee in a specific section ");
             System.out.println("10) Exit Please");
             int choose_what_you_want_to_do = in.nextInt();
-            switch (choose_what_you_want_to_do)
-            {
-                case 1:
-                {
+            switch (choose_what_you_want_to_do) {
+                case 1: {
                     System.out.println("PLease Enter the number of section you want to create:");
                     int n = in.nextInt();
-                    while(n<=0)
-                    {
+                    while (n <= 0) {
                         System.out.println("You entered invalid number of section please try again:");
-                        n=in.nextInt();
+                        n = in.nextInt();
                     }
-                    int section_size=section.size();
-                    for (int i = section_size; i < section_size+n; i++) {
+                    int section_size = section.size();
+                    for (int i = section_size; i < section_size + n; i++) {
                         section.add(new Section());
                         System.out.println("Please Enter the Name of the section:");
                         section.get(i).setName(in.next());
-                        boolean not_Enter_The_Correct_number=true;
-                        while(not_Enter_The_Correct_number)
-                        {
+                        boolean not_Enter_The_Correct_number = true;
+                        while (not_Enter_The_Correct_number) {
                             System.out.println("Choose one of the following letter to determine leader rank of this section:");
                             System.out.println("F) Full-Time employee");
                             System.out.println("L) Long-Serving employee");
@@ -65,7 +59,7 @@ public class Main
                                     section.get(i).add(em);
                                     employees.add(em);
                                     System.out.println("The Leader has been add successfully as full-time employee.");
-                                    not_Enter_The_Correct_number=false;
+                                    not_Enter_The_Correct_number = false;
                                     break;
                                 }
                                 case 'L': {
@@ -76,7 +70,7 @@ public class Main
                                     section.get(i).add(em);
                                     employees.add(em);
                                     System.out.println("The Leader has been add successfully as long-serving employee.");
-                                    not_Enter_The_Correct_number=false;
+                                    not_Enter_The_Correct_number = false;
                                     break;
                                 }
                                 case 'P': {
@@ -87,7 +81,7 @@ public class Main
                                     section.get(i).add(em);
                                     employees.add(em);
                                     System.out.println("The Leader has been added successfully as part-time employee");
-                                    not_Enter_The_Correct_number=false;
+                                    not_Enter_The_Correct_number = false;
                                     break;
                                 }
                                 default: {
@@ -98,18 +92,15 @@ public class Main
                     }
                     break;
                 }
-                case 2:
-                {
+                case 2: {
                     System.out.println("PLease Enter Section ID where you want to add The Employee ");
                     int id = in.nextInt();
-                    if(id<0||id>=section.size())
-                    {
+                    if (id < 0 || id >= section.size()) {
                         System.out.println("you have Entered invalid ID!!.");
                         break;
                     }
-                    boolean not_Enter_The_Correct_number=true;
-                    while(not_Enter_The_Correct_number)
-                    {
+                    boolean not_Enter_The_Correct_number = true;
+                    while (not_Enter_The_Correct_number) {
                         System.out.println("Choose one of the following letter to determine the employee's rank ");
                         System.out.println("F) Full-Time employee");
                         System.out.println("L) Long-Serving employee");
@@ -123,7 +114,7 @@ public class Main
                                 section.get(id).add(em);
                                 employees.add(em);
                                 System.out.println("The Employee has been added successfully as Full-Time Employee");
-                                not_Enter_The_Correct_number=false;
+                                not_Enter_The_Correct_number = false;
                                 break;
                             }
                             case 'L': {
@@ -133,7 +124,7 @@ public class Main
                                 section.get(id).add(em);
                                 employees.add(em);
                                 System.out.println("The Employee has been added successfully as Long-Serving Employee");
-                                not_Enter_The_Correct_number=false;
+                                not_Enter_The_Correct_number = false;
                                 break;
                             }
                             case 'P': {
@@ -143,7 +134,7 @@ public class Main
                                 section.get(id).add(em);
                                 employees.add(em);
                                 System.out.println("The Employee has been added successfully as Part-Time Employee");
-                                not_Enter_The_Correct_number=false;
+                                not_Enter_The_Correct_number = false;
                                 break;
                             }
                             default: {
@@ -153,26 +144,22 @@ public class Main
                     }
                     break;
                 }
-                case 3:
-                {
+                case 3: {
                     System.out.println("Enter the number of the Employee you want to remove please");
 
                     int number = in.nextInt();
-                    if((number<0||(number/100)>=section.size()))
-                    {
+                    if ((number < 0 || (number / 100) >= section.size())) {
+                        System.out.println("you have Entered invalid number!!.");
+                        break;
+                    } else if ((number % 100) >= section.get(number / 100).size()) {
                         System.out.println("you have Entered invalid number!!.");
                         break;
                     }
-                    else if((number%100)>=section.get(number/100).size())
-                    {
-                        System.out.println("you have Entered invalid number!!.");
-                        break;
+                    for (int i = (number + 1) % 100; i < section.get(number / 100).size(); i++) {
+                        int num = section.get(number / 100).getE().get(i).getNumber();
+                        section.get(number / 100).getE().get(i).setNumber((num - 1));
                     }
-                    for (int i = (number+1)%100; i <section.get(number/100).size() ; i++) {
-                        int num=section.get(number/100).getE().get(i).getNumber();
-                        section.get(number/100).getE().get(i).setNumber((num-1));
-                    }
-                    section.get(number / 100).remove(number%100);
+                    section.get(number / 100).remove(number % 100);
                     for (Employee e : employees) {
                         if (e.getNumber() == number) {
                             {
@@ -184,101 +171,80 @@ public class Main
                     System.out.println("The Employee has been removed successfully");
                     break;
                 }
-                case 4:
-                {
+                case 4: {
                     System.out.println("Enter employee's id that you want to terminate:");
                     int number = in.nextInt();
-                    if((number<0||(number/100)>=section.size()))
-                    {
+                    if ((number < 0 || (number / 100) >= section.size())) {
+                        System.out.println("you have Entered invalid number!!.");
+                        break;
+                    } else if ((number % 100) >= section.get(number / 100).size()) {
                         System.out.println("you have Entered invalid number!!.");
                         break;
                     }
-                    else if((number%100)>=section.get(number/100).size())
-                    {
-                        System.out.println("you have Entered invalid number!!.");
-                        break;
-                    }
-                    section.get(number / 100).getE().get(number%100).setActive(false);
+                    section.get(number / 100).getE().get(number % 100).setActive(false);
                     System.out.println("The Employee has been terminated successfully.");
                     break;
                 }
-                case 5:
-                {
+                case 5: {
                     System.out.println("Enter employee's id that you want to checked:");
                     int number = in.nextInt();
-                    if((number<0||(number/100)>=section.size()))
-                    {
+                    if ((number < 0 || (number / 100) >= section.size())) {
+                        System.out.println("you have Entered invalid number!!.");
+                        break;
+                    } else if ((number % 100) >= section.get(number / 100).size()) {
                         System.out.println("you have Entered invalid number!!.");
                         break;
                     }
-                    else if((number%100)>=section.get(number/100).size())
-                    {
-                        System.out.println("you have Entered invalid number!!.");
-                        break;
-                    }
-                    if(section.get(number / 100).getE().get(number%100).isActive())
-                    {
+                    if (section.get(number / 100).getE().get(number % 100).isActive()) {
                         System.out.println("The employee is active.");
-                    }
-                    else
+                    } else
                         System.out.println("The employee is'nt active.");
                     break;
                 }
-                case 6:
-                {
+                case 6: {
                     System.out.println("Enter employee's id: ");
                     int number = in.nextInt();
-                    if((number<0||(number/100)>=section.size()))
-                    {
+                    if ((number < 0 || (number / 100) >= section.size())) {
                         System.out.println("you have Entered invalid number!!.");
                         break;
-                    }
-                    else if((number%100)>=section.get(number/100).size())
-                    {
+                    } else if ((number % 100) >= section.get(number / 100).size()) {
                         System.out.println("you have Entered invalid number!!.");
                         break;
-                    }
-                    else if(section.get(number/100).getE().get(number%100) instanceof PartTimeEmployee)
-                    {
+                    } else if (section.get(number / 100).getE().get(number % 100) instanceof PartTimeEmployee) {
                         System.out.println("you can't set leaves for part-time employee");
                         break;
                     }
                     System.out.println("Enter the number of bonus leaves: ");
                     int number_of_extra_leave = in.nextInt();
-                    section.get(number / 100).getE().get(number%100).setExtra_leave(number_of_extra_leave);
+                    section.get(number / 100).getE().get(number % 100).setExtra_leave(number_of_extra_leave);
                     System.out.println("The Operation has been done successfully.");
                     break;
                 }
-                case 7:
-                {
-                    for (int i = 0; i < section.size(); i++) {
-                        System.out.println("All employee in the "+section.get(i).getId()+" Section");
-                        section.get(i).print_all_employee();
+                case 7: {
+                    for (Section value : section) {
+                        System.out.println("All employee in the " + value.getId() + " Section");
+                        value.print_all_employee();
                     }
                     break;
                 }
-                case 8:
-                {
+                case 8: {
                     System.out.println("Enter employee's id: ");
                     int number = in.nextInt();
-                    System.out.println(section.get(number / 100).getE().get(number%100).getLeave());
+                    System.out.println(section.get(number / 100).getE().get(number % 100).getLeave());
                     break;
                 }
-                case 9:
-                {
+                case 9: {
                     System.out.println("Enter The id of the section that you want to display: ");
                     int id = in.nextInt();
                     section.get(id).print_all_employee();
                     break;
                 }
-                case 10:
-                {
+                case 10: {
                     System.out.println("------------Waseem please don't minus 20 point from us  :)------------");
-                    Manar=false;
+                    Manar = false;
                     break;
                 }
-                default:
-                {
+                default: {
                     System.out.println("YOU Entered a wrong command please choose one of the following command");
                     System.out.println("------------Waseem please don't minus 20 point from us  :)------------");
                 }
